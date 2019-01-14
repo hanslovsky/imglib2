@@ -539,6 +539,19 @@ public class Views
 	}
 
 	/**
+	 * Translate the source such that the upper left corner is at the origin. If upper left
+	 * origin is already at origin return original source.
+	 *
+	 * @param interval
+	 *            the source.
+	 * @return view of the source translated to the origin or {@code source} if already at origin
+	 */
+	public static < T > RandomAccessibleInterval< T > requireZeroMin( final RandomAccessibleInterval< T > interval )
+	{
+		return Views.isZeroMin(interval) ? interval : Views.zeroMin(interval);
+	}
+
+	/**
 	 * take a (n-1)-dimensional slice of a n-dimensional view, fixing
 	 * d-component of coordinates to pos.
 	 */
